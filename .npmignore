@@ -1,0 +1,37 @@
+# Source files
+src/
+test-app/
+
+# Config files
+tsconfig.json
+tsup.config.ts
+.gitignore
+CLAUDE.md
+
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/

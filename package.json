@@ -1,0 +1,62 @@
+{
+  "name": "prisma-rest",
+  "version": "0.1.0",
+  "description": "Generate REST API routes for Next.js from Prisma schema",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "prisma-rest": "./dist/cli.js"
+  },
+  "scripts": {
+    "dev": "tsx src/cli.ts",
+    "build": "tsup && pnpm run copy-wasm",
+    "copy-wasm": "cp node_modules/.pnpm/prisma@*/node_modules/prisma/build/prisma_schema_build_bg.wasm dist/ 2>/dev/null || true",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "pnpm run typecheck && pnpm run build",
+    "publish:npm": "npm publish",
+    "publish:dry": "npm publish --dry-run"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "prisma",
+    "nextjs",
+    "rest",
+    "api",
+    "generator"
+  ],
+  "author": "Ricadro <ricardo@rimakes.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/prisma-rest-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/prisma-rest-generator/issues"
+  },
+  "homepage": "https://github.com/yourusername/prisma-rest-generator#readme",
+  "license": "MIT",
+  "packageManager": "pnpm@10.6.2",
+  "peerDependencies": {
+    "@prisma/client": ">=5.0.0",
+    "next": ">=14.0.0",
+    "prisma": ">=5.0.0",
+    "react": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@prisma/client": "^6.10.1",
+    "@prisma/internals": "^6.10.1",
+    "@types/node": "^24.0.4",
+    "chalk": "^5.4.1",
+    "commander": "^14.0.0",
+    "next": "^15.3.4",
+    "prisma": "^6.10.1",
+    "react": "^19.1.0",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}
