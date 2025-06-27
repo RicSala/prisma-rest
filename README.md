@@ -10,6 +10,7 @@ Generate REST API routes automatically from your Prisma schema for Next.js App R
 - 🎯 **Smart Defaults** - Auto-detects project structure and follows conventions
 - 🔄 **Safe Regeneration** - Multiple strategies for updating existing routes
 - 📝 **TypeScript First** - Fully typed route handlers with proper Next.js types
+- 💬 **Comment Directives** - Control generation with special comments in your schema
 
 ## Installation
 
@@ -189,6 +190,30 @@ The generator automatically detects your project structure:
 - Next.js 13+ with App Router
 - Prisma 4+
 - TypeScript (recommended)
+
+## Comment Directives
+
+Control route generation using special comments in your Prisma schema:
+
+### @rest-skip
+
+Skip generation for specific models:
+
+```prisma
+/// This model won't have REST routes generated
+/// @rest-skip
+model InternalLog {
+  id        String   @id @default(cuid())
+  message   String
+  level     String
+  createdAt DateTime @default(now())
+}
+```
+
+This is useful for:
+- Internal models that shouldn't be exposed via API
+- Models that require custom handling
+- Temporary exclusion during development
 
 ## Advanced Usage
 

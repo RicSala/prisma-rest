@@ -8,6 +8,7 @@ import { parsePrismaSchema } from './parsers/prismaParser';
 import { generateRoutesForModel } from './generators/routeGenerator';
 import { generateRouteHandler } from './templates/routeTemplate';
 import { GeneratorConfig } from './types';
+import { parseRestDirectives } from './utils/commentDirectives';
 
 const program = new Command();
 
@@ -93,6 +94,15 @@ program
 
       // Generate routes for each model
       for (const model of models) {
+        // Check for REST directives in model documentation
+        const directives = parseRestDirectives(model.documentation);
+        
+        if (directives.skip) {
+          console.log(chalk.gray(`  ⏩ Skipping ${model.name} (@rest-skip directive)`));
+          skippedCount++;
+          continue;
+        }
+        
         generateRoutesForModel(model, config.baseUrl);
         const modelDir = join(
           config.outputPath,

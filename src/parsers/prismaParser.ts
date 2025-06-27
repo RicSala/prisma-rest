@@ -4,6 +4,7 @@ import { resolve } from 'path'
 
 export interface ParsedModel {
   name: string
+  documentation?: string
   fields: Array<{
     name: string
     type: string
@@ -11,6 +12,7 @@ export interface ParsedModel {
     isRequired: boolean
     isId: boolean
     isUnique: boolean
+    documentation?: string
     relationName?: string
     relationFromFields?: string[]
     relationToFields?: string[]
@@ -33,6 +35,7 @@ export async function parsePrismaSchema(schemaPath: string): Promise<ParsedSchem
   
   const models: ParsedModel[] = dmmf.datamodel.models.map(model => ({
     name: model.name,
+    documentation: model.documentation,
     fields: model.fields.map(field => ({
       name: field.name,
       type: field.type,
@@ -40,6 +43,7 @@ export async function parsePrismaSchema(schemaPath: string): Promise<ParsedSchem
       isRequired: field.isRequired,
       isId: field.isId,
       isUnique: field.isUnique,
+      documentation: field.documentation,
       relationName: field.relationName,
       relationFromFields: field.relationFromFields ? [...field.relationFromFields] : undefined,
       relationToFields: field.relationToFields ? [...field.relationToFields] : undefined,
