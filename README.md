@@ -1,4 +1,4 @@
-# prisma-rest-generator
+# prisma-rest
 
 Generate REST API routes automatically from your Prisma schema for Next.js App Router.
 
@@ -14,11 +14,11 @@ Generate REST API routes automatically from your Prisma schema for Next.js App R
 ## Installation
 
 ```bash
-npm install -D prisma-rest-generator
+npm install -D prisma-rest
 # or
-yarn add -D prisma-rest-generator
+yarn add -D prisma-rest
 # or
-pnpm add -D prisma-rest-generator
+pnpm add -D prisma-rest
 ```
 
 ## Quick Start
@@ -58,18 +58,19 @@ npx prisma-rest generate
 
 ```typescript
 // lib/prisma.ts (or src/lib/prisma.ts)
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 
 const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined
-}
+  prisma: PrismaClient | undefined;
+};
 
-export const prisma = globalForPrisma.prisma ?? new PrismaClient()
+export const prisma = globalForPrisma.prisma ?? new PrismaClient();
 
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
 ```
 
 That's it! Your REST API is ready at:
+
 - `GET /api/users` - List all users with pagination
 - `POST /api/users` - Create a new user
 - `GET /api/users/[id]` - Get a specific user
@@ -194,6 +195,7 @@ The generator automatically detects your project structure:
 ### Customizing Generated Routes
 
 After generation, you can modify the routes to add:
+
 - Authentication middleware
 - Input validation
 - Custom business logic
@@ -206,12 +208,12 @@ The generated files include a header comment to track generation metadata.
 Example of adding auth to generated routes:
 
 ```typescript
-import { withAuth } from '@/lib/auth'
+import { withAuth } from '@/lib/auth';
 
 // Wrap the generated handler
 export const GET = withAuth(async (request: NextRequest) => {
   // Generated code...
-})
+});
 ```
 
 ## Troubleshooting
@@ -223,6 +225,7 @@ Ensure you've created the Prisma client instance at the correct location. The de
 ### Routes Already Exist
 
 By default, the generator won't overwrite existing files. Use:
+
 - `--force` to overwrite
 - `--skip-existing` to only generate new models
 - `--dry-run` to preview changes

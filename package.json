@@ -32,12 +32,12 @@
   "author": "Ricadro <ricardo@rimakes.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/prisma-rest-generator.git"
+    "url": "git+https://github.com/yourusername/prisma-rest.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/prisma-rest-generator/issues"
+    "url": "https://github.com/yourusername/prisma-rest/issues"
   },
-  "homepage": "https://github.com/yourusername/prisma-rest-generator#readme",
+  "homepage": "https://github.com/yourusername/prisma-rest#readme",
   "license": "MIT",
   "packageManager": "pnpm@10.6.2",
   "peerDependencies": {
