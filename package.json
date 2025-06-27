@@ -1,6 +1,6 @@
 {
   "name": "prisma-rest",
-  "version": "0.1.2",
+  "version": "0.1.31",
   "description": "Generate REST API routes for Next.js from Prisma schema",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
